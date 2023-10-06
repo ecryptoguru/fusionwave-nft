@@ -1,34 +1,7 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#FusionwaveNFT Marketplace
 
-## Getting Started
+In addition to our AI services, we are also leveraging the power of Web3 to provide access, ownership, and a marketplace for all Web3 users/clients/artists/creators/enthusiasts. With FusionwaveAI SaaS Tools, users can create multi-dimensional NFTs, unlocking new possibilities for digital art and ownership. We believe that by combining AI and Web3 technologies, we can create a unique and powerful platform for our users.
 
-First, run the development server:
+**Tech Stack**
 
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Our tech stack is centered around utilizing modern and fluid technologies that allow us to build world-class NFT Marketplace that is both feature rich and user-friendly. Currently, our tech stack includes Nextjs 12, React, TailwindCSS, JavaScript, Solidity and we have deployed on Vercel.
