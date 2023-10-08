@@ -31,7 +31,8 @@ const MenuItems = ({ isMobile, active, setActive, setIsOpen }) => {
 
             if (isMobile) setIsOpen(false);
           }}
-          className={`flex flex-row items-center font-poppins font-semibold text-base dark:hover:text-white hover:text-nft-dark mx-3
+          className={`flex flex-row items-center font-poppins font-semibold text-base dark:hover:text-white
+           hover:text-nft-dark mx-3
           ${active === item
             ? 'dark:text-white text-nft-black-1'
             : 'dark:text-nft-gray-3 text-nft-gray-2'} 
@@ -112,12 +113,16 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <nav className="flexBetween w-full fixed z-10 p-4 flex-row border-b dark:bg-nft-dark bg-white dark:border-nft-black-1 border-nft-gray-1">
+    <nav className="flexBetween w-full fixed z-10 p-4 flex-row border-b dark:bg-nft-dark bg-white
+     dark:border-nft-black-1 border-nft-gray-1"
+    >
       <div className="flex flex-1 flex-row justify-start">
         <Link href="/">
           <div className="flexCenter md:hidden cursor-pointer" onClick={() => setActive('Explore NFTs')}>
             <Image src={images.logo02} objectFit="contain" width={32} height={32} alt="logo" />
-            <p className=" dark:text-white text-nft-black-1 font-semibold text-lg ml-1">FusionwaveNFT</p>
+            <p className=" dark:text-white text-nft-black-1 font-semibold text-lg ml-1">
+              FusionwaveNFT
+            </p>
           </div>
         </Link>
         <Link href="/">
