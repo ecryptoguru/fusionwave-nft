@@ -59,7 +59,7 @@ const CreateItem = () => {
             btnName="Generate Image using AI"
             btnType="primary"
             classStyles="rounded-xl"
-            handleClick={() => {}}
+            handleClick={() => window.open('https://labs.openai.com')}
           />
         </div>
         <div className="mt-12">
