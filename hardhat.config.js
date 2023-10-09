@@ -1,15 +1,17 @@
 require('@nomicfoundation/hardhat-toolbox');
-require('dotenv').config({ path: '.env' });
-
-const { ALCHEMY_HTTP_URL } = process.env;
-const { PRIVATE_KEY } = process.env;
+require('dotenv').config();
 
 module.exports = {
-  solidity: '0.8.4',
+  defaultNetwork: 'sepolia',
   networks: {
-    mumbai: {
-      url: ALCHEMY_HTTP_URL,
-      accounts: [PRIVATE_KEY],
+    hardhat: {
     },
+    sepolia: {
+      url: process.env.RPC_URL,
+      accounts: [process.env.PRIVATE_KEY],
+    },
+  },
+  solidity: {
+    version: '0.8.4',
   },
 };
