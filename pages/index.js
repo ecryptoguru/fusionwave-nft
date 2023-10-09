@@ -50,17 +50,45 @@ const Home = () => {
       <div className="w-full minmd:w-4/5">
 
         <Banner
-          name={(<>GenerativeAI enabled NFT Marketplace <br />Create, Discover, collect, and sell </>)}
+          name={(<>GenerativeAI enabled NFT Marketplace <br />Create AI Magic </>)}
           childStyles="md:text-4xl sm:text-2xl xs:text-xl text-left"
           parentStyle="justify-start mb-7 h-72 sm:h-60 p-12 xs:p-4 xs:h-44 rounded-3xl"
           handleClick={() => window.open('https://labs.openai.com')}
         />
 
-        <div>
+        <div className="mt-16">
+          <div className="flexBetween mx-4 xs:mx-0 minlg:mx-8 sm:flex-col sm:items-start">
+            <h1 className="flex-1 font-poppins dark:text-white text-nft-black-1
+                text-2xl minlg:text-4xl font-semibold sm:mb-4"
+            >
+              Top NFTs
+            </h1>
+            <div className="flex-2 sm:w-full flex flex-row sm:flex-col">
+              Search Bar
+            </div>
+          </div>
+          <div className="mt-3 w-full flex flex-wrap justify-start md:justify-center">
+
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+              <NFTCard
+                key={`nft-${i}`}
+                nft={{
+                  i,
+                  name: `Nifty NFT ${i}`,
+                  price: (10 - i * 0.534).toFixed(2),
+                  seller: `0x${makeid(3)}...${makeid(4)}`,
+                  owner: `0x${makeid(3)}...${makeid(4)}`,
+                  description: 'NFT on Sale',
+                }}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="mt-10">
           <h1 className="font-poppins dark:text-white text-nft-black-1 text-2xl minlg:text-4xl
           font-semibold ml-4 xs:ml-0"
           >
-            Best Creators
+            Top Creators
           </h1>
 
           <div className="relative flex-1 max-w-full flex mt-3" ref={parentRef}>
@@ -107,34 +135,6 @@ const Home = () => {
               </>
               )}
             </div>
-          </div>
-        </div>
-        <div className="mt-10">
-          <div className="flexBetween mx-4 xs:mx-0 minlg:mx-8 sm:flex-col sm:items-start">
-            <h1 className="flex-1 font-poppins dark:text-white text-nft-black-1
-                text-2xl minlg:text-4xl font-semibold sm:mb-4"
-            >
-              Top NFTs
-            </h1>
-            <div className="flex-2 sm:w-full flex flex-row sm:flex-col">
-              Search Bar
-            </div>
-          </div>
-          <div className="mt-3 w-full flex flex-wrap justify-start md:justify-center">
-
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-              <NFTCard
-                key={`nft-${i}`}
-                nft={{
-                  i,
-                  name: `Nifty NFT ${i}`,
-                  price: (10 - i * 0.534).toFixed(2),
-                  seller: `0x${makeid(3)}...${makeid(4)}`,
-                  owner: `0x${makeid(3)}...${makeid(4)}`,
-                  description: 'NFT on Sale',
-                }}
-              />
-            ))}
           </div>
         </div>
       </div>
