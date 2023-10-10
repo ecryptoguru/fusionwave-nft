@@ -14,3 +14,4 @@ const Button = ({ btnName, classStyles, btnType, handleClick }) => (
 );
 
 export default Button;
+

@@ -1,15 +1,18 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useContext } from 'react';
 import { create as ipfsHttpClient } from 'ipfs-http-client';
 import { useDropzone } from 'react-dropzone';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
-import { Button, Input } from '../components';
+import { NFTContext } from '../context/NFTContext';
+import { Button, Input, Loader } from '../components';
 import images from '../assets';
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0');
 
 const CreateItem = () => {
+  const { createSale, isLoadingNFT } = useContext(NFTContext);
   const [fileUrl, setFileUrl] = useState(null);
   const { theme } = useTheme();
 
@@ -47,6 +50,31 @@ const CreateItem = () => {
   );
 
   const [formInput, setFormInput] = useState({ price: '', name: '', description: '' });
+  const router = useRouter();
+
+  const createMarket = async () => {
+    const { name, description, price } = formInput;
+    if (!name || !description || !price || !fileUrl) return;
+    /* first, upload to IPFS */
+    const data = JSON.stringify({ name, description, image: fileUrl });
+    try {
+      const added = await client.add(data);
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
+      await createSale(url, formInput.price);
+      router.push('/');
+    } catch (error) {
+      console.log('Error uploading file: ', error);
+    }
+  };
+
+  if (isLoadingNFT) {
+    return (
+      <div className="flexCenter" style={{ height: '51vh' }}>
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div className="flex justify-center sm:px-4 p-12">
@@ -132,7 +160,7 @@ const CreateItem = () => {
             btnName="Create NFT"
             btnType="primary"
             classStyles="rounded-xl"
-            handleClick={() => {}}
+            handleClick={createMarket}
           />
         </div>
       </div>
