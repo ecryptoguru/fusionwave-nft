@@ -4,8 +4,9 @@ import Link from 'next/link';
 
 import images from '../assets';
 import { NFTContext } from '../context/NFTContext';
+import { shortenAddress } from '../utils/shortenAddress';
 
-const NFTCard = ({ nft }) => {
+const NFTCard = ({ nft, onProfilePage }) => {
   const { nftCurrency } = useContext(NFTContext);
 
   return (
@@ -32,7 +33,11 @@ const NFTCard = ({ nft }) => {
                 {nftCurrency}
               </span>
             </p>
+            <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xs minlg:text-lg">
+              {shortenAddress(onProfilePage ? nft.owner : nft.seller)}
+            </p>
           </div>
+          <div className="mt-1 minlg:mt-3 flexBetween flex-row" />
         </div>
       </div>
     </Link>

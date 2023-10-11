@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useContext } from 'react';
-import { create as ipfsHttpClient } from 'ipfs-http-client';
+import { create } from 'ipfs-http-client';
 import { useDropzone } from 'react-dropzone';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -9,7 +9,18 @@ import { NFTContext } from '../context/NFTContext';
 import { Button, Input, Loader } from '../components';
 import images from '../assets';
 
-const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0');
+const auth = `Basic ${Buffer.from(
+  `${process.env.REACT_APP_INFURIA_PID}:${process.env.REACT_APP_INFURIA_API}`,
+).toString('base64')}`;
+
+const client = create({
+  host: 'ipfs.infura.io',
+  port: '5001',
+  protocol: 'https',
+  headers: {
+    authorization: auth,
+  },
+});
 
 const CreateItem = () => {
   const { createSale, isLoadingNFT } = useContext(NFTContext);
