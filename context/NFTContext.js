@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
 import axios from 'axios';
-
 import { MarketAddress, MarketAddressABI } from './constants';
 
 export const NFTContext = React.createContext();
@@ -17,7 +16,12 @@ export const NFTProvider = ({ children }) => {
   const fetchNFTs = async () => {
     setIsLoadingNFT(false);
 
-    const provider = new ethers.providers.JsonRpcProvider();
+    const network = 'sepolia';
+
+    const provider = ethers.getDefaultProvider(network, {
+
+      infura: '2WbzvgJK8c2cWFobTT0gJqxEeut',
+    });
     const contract = fetchContract(provider);
 
     const data = await contract.fetchMarketItems();

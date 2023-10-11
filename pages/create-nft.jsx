@@ -1,7 +1,7 @@
 import { useState, useMemo, useCallback, useContext } from 'react';
 import { create } from 'ipfs-http-client';
-import { useDropzone } from 'react-dropzone';
 import { useRouter } from 'next/router';
+import { useDropzone } from 'react-dropzone';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
@@ -10,7 +10,7 @@ import { Button, Input, Loader } from '../components';
 import images from '../assets';
 
 const auth = `Basic ${Buffer.from(
-  `${process.env.REACT_APP_INFURIA_PID}:${process.env.REACT_APP_INFURIA_API}`,
+  '2WbzvgJK8c2cWFobTT0gJqxEeut:e511d33382de4aa0dfacd159850b133f',
 ).toString('base64')}`;
 
 const client = create({
@@ -31,7 +31,7 @@ const CreateItem = () => {
     try {
       const added = await client.add({ content: file });
 
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      const url = `https://fusionai.infura-ipfs.io/ipfs/${added.path}`;
 
       setFileUrl(url);
     } catch (error) {
@@ -46,21 +46,20 @@ const CreateItem = () => {
   const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
     onDrop,
     accept: 'image/*',
-    maxSize: 10000000,
+    maxSize: 5000000,
   });
 
   // add tailwind classes acording to the file status
   const fileStyle = useMemo(
     () => (
-      `dark:bg-nft-black-1 bg-white border dark:border-white border-nft-gray-2 flex flex-col 
-       items-center p-5 rounded-sm border-dashed  
+      `dark:bg-nft-black-1 bg-white border dark:border-white border-nft-gray-2 flex flex-col items-center p-5 rounded-sm border-dashed  
        ${isDragActive ? ' border-file-active ' : ''} 
        ${isDragAccept ? ' border-file-accept ' : ''} 
        ${isDragReject ? ' border-file-reject ' : ''}`),
     [isDragActive, isDragReject, isDragAccept],
   );
 
-  const [formInput, setFormInput] = useState({ price: '', name: '', description: '' });
+  const [formInput, updateFormInput] = useState({ price: '', name: '', description: '' });
   const router = useRouter();
 
   const createMarket = async () => {
@@ -70,7 +69,7 @@ const CreateItem = () => {
     const data = JSON.stringify({ name, description, image: fileUrl });
     try {
       const added = await client.add(data);
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      const url = `https://fusionai.infura-ipfs.io/ipfs/${added.path}`;
       /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
       await createSale(url, formInput.price);
       router.push('/');
@@ -90,28 +89,15 @@ const CreateItem = () => {
   return (
     <div className="flex justify-center sm:px-4 p-12">
       <div className="w-3/5 md:w-full">
-        <h1 className="font-poppins dark:text-white text-nft-black-1 font-semibold text-2xl">
-          Create new NFT
-        </h1>
-        <div className="mt-6">
-          <Button
-            btnName="Generate AI Image"
-            btnType="primary"
-            classStyles="shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 rounded-xl"
-            handleClick={() => window.open('https://labs.openai.com')}
-          />
-        </div>
-        <div className="mt-12">
-          <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
-            Upload file
-          </p>
+        <h1 className="font-poppins dark:text-white text-nft-black-1 font-semibold text-2xl">Create new item</h1>
+
+        <div className="mt-16">
+          <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">Upload file</p>
           <div className="mt-4">
             <div {...getRootProps()} className={fileStyle}>
               <input {...getInputProps()} />
               <div className="flexCenter flex-col text-center">
-                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
-                  JPG, PNG, GIF, SVG, WEBM. Max 10mb.
-                </p>
+                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">JPG, PNG, GIF, SVG, WEBM, MP3, MP4. Max 100mb.</p>
 
                 <div className="my-12 w-full flex justify-center">
                   <Image
@@ -124,12 +110,8 @@ const CreateItem = () => {
                   />
                 </div>
 
-                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm">
-                  Drag and Drop File
-                </p>
-                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm mt-2">
-                  Or browse media on your device
-                </p>
+                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm">Drag and Drop File</p>
+                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm mt-2">Or browse media on your device</p>
               </div>
             </div>
             {fileUrl && (
@@ -149,26 +131,26 @@ const CreateItem = () => {
           inputType="input"
           title="Name"
           placeholder="Asset Name"
-          handleClick={(e) => setFormInput({ ...formInput, name: e.target.value })}
+          handleClick={(e) => updateFormInput({ ...formInput, name: e.target.value })}
         />
 
         <Input
           inputType="textarea"
           title="Description"
           placeholder="Asset Description"
-          handleClick={(e) => setFormInput({ ...formInput, description: e.target.value })}
+          handleClick={(e) => updateFormInput({ ...formInput, description: e.target.value })}
         />
 
         <Input
           inputType="number"
           title="Price"
           placeholder="Asset Price"
-          handleClick={(e) => setFormInput({ ...formInput, price: e.target.value })}
+          handleClick={(e) => updateFormInput({ ...formInput, price: e.target.value })}
         />
 
         <div className="mt-7 w-full flex justify-end">
           <Button
-            btnName="Create NFT"
+            btnName="Create Item"
             btnType="primary"
             classStyles="rounded-xl"
             handleClick={createMarket}

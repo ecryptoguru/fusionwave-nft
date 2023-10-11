@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['ipfs.infura.io'],
+    domains: ['fusionai.infura-ipfs.io'],
   },
 };
 

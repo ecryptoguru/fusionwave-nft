@@ -9,13 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ethersproject/providers": "^5.7.2",
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
     "@openzeppelin/contracts": "^4.5.0",
     "axios": "^0.26.0",
     "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
     "hardhat": "^2.18.0",
-    "ipfs-http-client": "^59.0.0",
+    "ipfs-http-client": "^56.0.3",
     "next": "12.1.0",
     "next-themes": "^0.1.1",
     "react": "17.0.2",
