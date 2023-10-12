@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Script from 'next/script';
 import { ThemeProvider } from 'next-themes';
 import { NFTProvider } from '../context/NFTContext';
@@ -8,6 +9,9 @@ const Marketplace = ({ Component, pageProps }) => (
   <NFTProvider>
     <ThemeProvider attribute="class">
       <div className="dark:bg-nft-dark bg-white min-h-screen">
+        <Head>
+          <title>AI NFT Marketplace</title>
+        </Head>
         <Navbar />
         <div className="pt-65">
           <Component {...pageProps} />

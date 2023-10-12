@@ -46,7 +46,7 @@ const CreateItem = () => {
   const { getRootProps, getInputProps, isDragActive, isDragAccept, isDragReject } = useDropzone({
     onDrop,
     accept: 'image/*',
-    maxSize: 5000000,
+    maxSize: 10000000,
   });
 
   // add tailwind classes acording to the file status
@@ -89,15 +89,27 @@ const CreateItem = () => {
   return (
     <div className="flex justify-center sm:px-4 p-12">
       <div className="w-3/5 md:w-full">
-        <h1 className="font-poppins dark:text-white text-nft-black-1 font-semibold text-2xl">Create new item</h1>
-
-        <div className="mt-16">
-          <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">Upload file</p>
+        <h1 className="font-poppins dark:text-white text-nft-black-1 font-semibold text-2xl">
+          Create new NFT
+        </h1>
+        <div className="mt-10" />
+        <Button
+          btnName="Generate AI Image"
+          btnType="primary"
+          classStyles="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          handleClick={() => window.open('https://labs.openai.com')}
+        />
+        <div className="mt-10">
+          <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
+            Upload file
+          </p>
           <div className="mt-4">
             <div {...getRootProps()} className={fileStyle}>
               <input {...getInputProps()} />
               <div className="flexCenter flex-col text-center">
-                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">JPG, PNG, GIF, SVG, WEBM, MP3, MP4. Max 100mb.</p>
+                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
+                  JPG, PNG, GIF, SVG, WEBM, MP3, MP4. Max 10mb.
+                </p>
 
                 <div className="my-12 w-full flex justify-center">
                   <Image
@@ -110,8 +122,12 @@ const CreateItem = () => {
                   />
                 </div>
 
-                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm">Drag and Drop File</p>
-                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm mt-2">Or browse media on your device</p>
+                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm">
+                  Drag and Drop File
+                </p>
+                <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-sm mt-2">
+                  Or browse media on your device
+                </p>
               </div>
             </div>
             {fileUrl && (
@@ -150,7 +166,7 @@ const CreateItem = () => {
 
         <div className="mt-7 w-full flex justify-end">
           <Button
-            btnName="Create Item"
+            btnName="Create NFT"
             btnType="primary"
             classStyles="rounded-xl"
             handleClick={createMarket}
@@ -162,3 +178,4 @@ const CreateItem = () => {
 };
 
 export default CreateItem;
+
