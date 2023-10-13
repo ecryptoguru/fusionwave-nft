@@ -106,7 +106,7 @@ const Home = () => {
           name={(<>GenerativeAI enabled NFT Marketplace <br />Create AI Magic </>)}
           childStyles="md:text-4xl sm:text-2xl xs:text-xl text-left"
           parentStyle="justify-start mb-7 h-72 sm:h-60 p-12 xs:p-4 xs:h-44 rounded-3xl"
-          handleClick={() => window.open('https://labs.openai.com')}
+          handleClick={() => window.open('https://fusionimage.netlify.app/')}
         />
 
         {!isLoading && !nfts.length ? (
