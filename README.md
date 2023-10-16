@@ -8,4 +8,4 @@ We are leveraging the power of Web3 to provide access, ownership, and a marketpl
 
 **Tech Stack**
 
-Our tech stack is centered around utilizing modern and fluid technologies that allow us to build world-class NFT Marketplace that is both feature rich and user-friendly. Currently, our tech stack includes Nextjs, React, TailwindCSS, JavaScript, Solidity and we have deployed on Vercel.
+Our tech stack is centered around utilizing modern and fluid technologies that allow us to build world-class NFT Marketplace that is both feature rich and user-friendly. Currently, our tech stack includes Nextjs, React, TailwindCSS, JavaScript, Solidity, Nodejs, Ethersjs and we have deployed on Vercel.
