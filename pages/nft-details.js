@@ -155,12 +155,12 @@ const AssetDetails = () => {
               <Button
                 btnName="Checkout"
                 btnType="primary"
-                classStyles="mr-5 sm:mr-0 sm:mb-5 rounded-xl"
+                classStyles="mr-5 sm:mr-0 sm:mb-5 rounded-lg"
                 handleClick={checkout}
               />
               <Button
                 btnName="Cancel"
-                btnType="outline"
+                btnType="primary"
                 classStyles="rounded-lg"
                 handleClick={() => setPaymentModal(false)}
               />
