@@ -1,4 +1,4 @@
-This project has another codebase for the GenerativeAI Image generation app, FusionImage.
+This project has another github codebase for the GenerativeAI Image generation app, FusionImage.
 
 https://github.com/ecryptoguru/fusionimage
 
