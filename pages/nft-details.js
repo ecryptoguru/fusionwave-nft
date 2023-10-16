@@ -141,7 +141,7 @@ const AssetDetails = () => {
                   btnName={`Buy for ${nft.price} ${nftCurrency}`}
                   btnType="primary"
                   classStyles="mr-5 sm:mr-0 sm:mb-5 rounded-xl"
-                  handleClick={() => {}}
+                  handleClick={() => setPaymentModal(true)}
                 />
               )}
         </div>
