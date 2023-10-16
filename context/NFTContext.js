@@ -108,7 +108,7 @@ export const NFTProvider = ({ children }) => {
     await transaction.wait();
   };
 
-  const buyNft = async (nft) => {
+  const buyNFT = async (nft) => {
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
@@ -148,7 +148,7 @@ export const NFTProvider = ({ children }) => {
   }, []);
 
   return (
-    <NFTContext.Provider value={{ nftCurrency, buyNft, createSale, fetchNFTs, fetchMyNFTsOrCreatedNFTs, connectWallet, currentAccount, isLoadingNFT }}>
+    <NFTContext.Provider value={{ nftCurrency, buyNFT, createSale, fetchNFTs, fetchMyNFTsOrCreatedNFTs, connectWallet, currentAccount, isLoadingNFT }}>
       {children}
     </NFTContext.Provider>
   );

@@ -48,7 +48,7 @@ const PaymentBodyCmp = ({ nft, nftCurrency }) => (
 );
 
 const AssetDetails = () => {
-  const { nftCurrency, currentAccount, isLoadingNFT } = useContext(NFTContext);
+  const { nftCurrency, currentAccount, isLoadingNFT, buyNFT } = useContext(NFTContext);
   const [nft, setNft] = useState({ image: '', itemId: '', name: '', owner: '', price: '', seller: '' });
   const [paymentModal, setPaymentModal] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
@@ -64,6 +64,7 @@ const AssetDetails = () => {
   }, [router.isReady]);
 
   const checkout = async () => {
+    await buyNFT(nft);
     setPaymentModal(false);
     setSuccessModal(true);
   };
