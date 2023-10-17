@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
 import axios from 'axios';
-import WalletConnectProvider from '@walletconnect/web3-provider';
 
 import { MarketAddress, MarketAddressABI } from './constants';
 
@@ -14,30 +13,6 @@ export const NFTProvider = ({ children }) => {
   const nftCurrency = 'ETH';
   const [currentAccount, setCurrentAccount] = useState('');
   const [isLoadingNFT, setIsLoadingNFT] = useState(false);
-
-  const providerOptions = {
-    // Example with injected providers
-    injected: {
-      display: {
-        logo: 'data:image/gif;base64,INSERT_BASE64_STRING',
-        name: 'Injected',
-        description: 'Connect with the provider in your Browser',
-      },
-      package: null,
-    },
-    // Example with WalletConnect provider
-    walletconnect: {
-      display: {
-        logo: 'data:image/gif;base64,INSERT_BASE64_STRING',
-        name: 'Mobile',
-        description: 'Scan qrcode with your mobile wallet',
-      },
-      package: WalletConnectProvider,
-      options: {
-        infuraId: '2WbzvgJK8c2cWFobTT0gJqxEeut', // required
-      },
-    },
-  };
 
   const fetchNFTs = async () => {
     setIsLoadingNFT(false);
@@ -67,11 +42,7 @@ export const NFTProvider = ({ children }) => {
   const fetchMyNFTsOrListedNFTs = async (type) => {
     setIsLoadingNFT(false);
 
-    const web3Modal = new Web3Modal({
-      network: 'sepolia', // optional
-      cacheProvider: true, // optional
-      providerOptions, // required
-    });
+    const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
