@@ -181,6 +181,7 @@ const Navbar = () => {
             <ButtonGroup
               setActive={setActive}
               router={router}
+              setIsOpen={setIsOpen}
             />
           </div>
         </div>

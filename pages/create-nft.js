@@ -30,9 +30,7 @@ const CreateItem = () => {
   const uploadToInfura = async (file) => {
     try {
       const added = await client.add({ content: file });
-
       const url = `https://fusionai.infura-ipfs.io/ipfs/${added.path}`;
-
       setFileUrl(url);
     } catch (error) {
       console.log('Error uploading file: ', error);
@@ -53,7 +51,7 @@ const CreateItem = () => {
   const fileStyle = useMemo(
     () => (
       `dark:bg-nft-black-1 bg-white border dark:border-white border-nft-gray-2 flex flex-col items-center p-5 rounded-sm border-dashed  
-       ${isDragActive ? ' border-file-active ' : ''} 
+       ${isDragActive ? ' border-file-active ' : ''}
        ${isDragAccept ? ' border-file-accept ' : ''} 
        ${isDragReject ? ' border-file-reject ' : ''}`),
     [isDragActive, isDragReject, isDragAccept],
