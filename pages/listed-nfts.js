@@ -4,12 +4,12 @@ import { NFTContext } from '../context/NFTContext';
 import { Loader, NFTCard } from '../components';
 
 const CreatorDashboard = () => {
-  const { fetchMyNFTsOrCreatedNFTs } = useContext(NFTContext);
+  const { fetchMyNFTsOrListedNFTs } = useContext(NFTContext);
   const [nfts, setNfts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchMyNFTsOrCreatedNFTs('fetchItemsListed')
+    fetchMyNFTsOrListedNFTs('fetchItemsListed')
       .then((items) => {
         setNfts(items);
         setIsLoading(false);

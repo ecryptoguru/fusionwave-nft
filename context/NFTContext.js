@@ -64,7 +64,7 @@ export const NFTProvider = ({ children }) => {
     return items;
   };
 
-  const fetchMyNFTsOrCreatedNFTs = async (type) => {
+  const fetchMyNFTsOrListedNFTs = async (type) => {
     setIsLoadingNFT(false);
 
     const web3Modal = new Web3Modal({
@@ -148,7 +148,7 @@ export const NFTProvider = ({ children }) => {
   }, []);
 
   return (
-    <NFTContext.Provider value={{ nftCurrency, buyNFT, createSale, fetchNFTs, fetchMyNFTsOrCreatedNFTs, connectWallet, currentAccount, isLoadingNFT }}>
+    <NFTContext.Provider value={{ nftCurrency, buyNFT, createSale, fetchNFTs, fetchMyNFTsOrListedNFTs, connectWallet, currentAccount, isLoadingNFT }}>
       {children}
     </NFTContext.Provider>
   );
