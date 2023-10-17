@@ -1,20 +1,20 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
 
 import { NFTContext } from '../context/NFTContext';
-import { shortenAddress } from '../utils/shortenAddress';
-import { Loader, NFTCard, SearchBar, Banner } from '../components';
+import { Loader, NFTCard, Banner, SearchBar } from '../components';
 import images from '../assets';
+import { shortenAddress } from '../utils/shortenAddress';
 
 const MyNFTs = () => {
-  const { fetchMyNFTsOrCreatedNFTs, currentAccount } = useContext(NFTContext);
+  const { fetchMyNFTsOrListedNFTs, currentAccount } = useContext(NFTContext);
   const [nfts, setNfts] = useState([]);
   const [nftsCopy, setNftsCopy] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [activeSelect, setActiveSelect] = useState('Recently Added');
 
   useEffect(() => {
-    fetchMyNFTsOrCreatedNFTs('fetchMyNFTs')
+    fetchMyNFTsOrListedNFTs()
       .then((items) => {
         setNfts(items);
         setNftsCopy(items);
@@ -41,13 +41,21 @@ const MyNFTs = () => {
     }
   }, [activeSelect]);
 
+  if (isLoading) {
+    return (
+      <div className="flexStart min-h-screen">
+        <Loader />
+      </div>
+    );
+  }
+
   const onHandleSearch = (value) => {
     const filteredNfts = nfts.filter(({ name }) => name.toLowerCase().includes(value.toLowerCase()));
 
-    if (filteredNfts.length === 0) {
-      setNfts(nftsCopy);
-    } else {
+    if (filteredNfts.length) {
       setNfts(filteredNfts);
+    } else {
+      setNfts(nftsCopy);
     }
   };
 
@@ -57,21 +65,13 @@ const MyNFTs = () => {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="flexStart min-h-screen">
-        <Loader />
-      </div>
-    );
-  }
-
   return (
     <div className="w-full flex justify-start items-center flex-col min-h-screen">
       <div className="w-full flexCenter flex-col">
         <Banner
-          name="Your Awesome NFTs"
+          name="Your Nifty NFTs"
           childStyles="text-center mb-4"
-          parentStyle="h-80 justify-center"
+          parentStyles="h-80 justify-center"
         />
 
         <div className="flexCenter flex-col -mt-20 z-0">
@@ -88,10 +88,10 @@ const MyNFTs = () => {
         </div>
       </div>
 
-      {(!isLoading && nfts.length === 0) ? (
+      {!isLoading && !nfts.length && !nftsCopy.length ? (
         <div className="flexCenter sm:p-4 p-16">
-          <h1 className="font-poppins dark:text-white text-nft-black-1 text-3xl font-extrabold">
-            No NFTs owned
+          <h1 className="font-poppins dark:text-white text-nft-black-1 font-extrabold text-3xl">
+            No NFTs Owned
           </h1>
         </div>
       ) : (
@@ -105,13 +105,7 @@ const MyNFTs = () => {
             />
           </div>
           <div className="mt-3 w-full flex flex-wrap">
-            {nfts.map((nft) => (
-              <NFTCard
-                key={`nft-${nft.tokenId}`}
-                nft={nft}
-                onProfilePage
-              />
-            ))}
+            {nfts.map((nft) => <NFTCard key={nft.token} nft={nft} onProfilePage />)}
           </div>
         </div>
       )}
