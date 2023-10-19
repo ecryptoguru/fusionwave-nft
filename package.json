@@ -13,6 +13,8 @@
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
     "@openzeppelin/contracts": "^4.5.0",
     "@walletconnect/web3-provider": "^1.8.0",
+    "@web3modal/ethereum": "^2.7.1",
+    "@web3modal/react": "^2.7.1",
     "axios": "^0.26.0",
     "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
@@ -23,6 +25,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-dropzone": "^12.0.4",
+    "viem": "^1.16.6",
+    "wagmi": "^1.4.4",
     "web3modal": "^1.9.12"
   },
   "devDependencies": {

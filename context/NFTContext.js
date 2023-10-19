@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import Web3Modal from 'web3modal';
+import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import axios from 'axios';
+
+import Web3Modal from 'web3modal';
 
 import { MarketAddress, MarketAddressABI } from './constants';
 
@@ -11,7 +12,7 @@ const fetchContract = (signerOrProvider) => new ethers.Contract(MarketAddress, M
 
 export const NFTProvider = ({ children }) => {
   const nftCurrency = 'ETH';
-  const [currentAccount, setCurrentAccount] = useState('');
+  const [currentAccount] = useState('');
   const [isLoadingNFT, setIsLoadingNFT] = useState(false);
 
   const fetchNFTs = async () => {
@@ -93,33 +94,8 @@ export const NFTProvider = ({ children }) => {
     setIsLoadingNFT(false);
   };
 
-  const connectWallet = async () => {
-    if (!window.ethereum) return alert('Please install MetaMask.');
-
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-
-    setCurrentAccount(accounts[0]);
-    window.location.reload();
-  };
-
-  const checkIfWalletIsConnect = async () => {
-    if (!window.ethereum) return alert('Please install MetaMask.');
-
-    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-
-    if (accounts.length) {
-      setCurrentAccount(accounts[0]);
-    } else {
-      console.log('No accounts found');
-    }
-  };
-
-  useEffect(() => {
-    checkIfWalletIsConnect();
-  }, []);
-
   return (
-    <NFTContext.Provider value={{ nftCurrency, buyNFT, createSale, fetchNFTs, fetchMyNFTsOrListedNFTs, connectWallet, currentAccount, isLoadingNFT }}>
+    <NFTContext.Provider value={{ nftCurrency, buyNFT, createSale, fetchNFTs, fetchMyNFTsOrListedNFTs, currentAccount, isLoadingNFT }}>
       {children}
     </NFTContext.Provider>
   );

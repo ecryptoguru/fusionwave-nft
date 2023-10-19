@@ -49,7 +49,7 @@ const Footer = () => {
             <div className="flex-initial">
               <Button
                 btnName="Email me"
-                btnType="primary"
+                btnType="secondary"
                 classStyles="rounded-md"
               />
             </div>

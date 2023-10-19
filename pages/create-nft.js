@@ -166,7 +166,7 @@ const CreateItem = () => {
         <div className="mt-7 w-full flex justify-end">
           <Button
             btnName="Create NFT"
-            btnType="primary"
+            btnType="secondary"
             classStyles="rounded-xl"
             handleClick={createMarket}
           />
