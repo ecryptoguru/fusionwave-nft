@@ -9,11 +9,9 @@ import { NFTContext } from '../context/NFTContext';
 import { Button, Input, Loader } from '../components';
 import images from '../assets';
 
-// eslint-disable-next-line prefer-template
-const auth = 'Basic ' + Buffer.from(
-  // eslint-disable-next-line prefer-template
-  process.env.REACT_APP_INFURIA_PID + ':' + process.env.REACT_APP_INFURIA_API,
-).toString('base64');
+const auth = `Basic ${Buffer.from(
+  '2WbzvgJK8c2cWFobTT0gJqxEeut:e511d33382de4aa0dfacd159850b133f',
+).toString('base64')}`;
 
 const client = create({
   host: 'ipfs.infura.io',
