@@ -1,9 +1,8 @@
 import { useEffect, useState, useRef, useContext } from 'react';
 import { useTheme } from 'next-themes';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-import { CreatorCard, NFTCard, Loader, SearchBar, Banner, Button } from '../components';
+import { CreatorCard, NFTCard, Loader, SearchBar, Banner } from '../components';
 import { NFTContext } from '../context/NFTContext';
 import { getCreators } from '../utils/getTopCreators';
 import { shortenAddress } from '../utils/shortenAddress';
@@ -20,7 +19,7 @@ const Home = () => {
 
   const scrollRef = useRef(null);
   const parentRef = useRef(null);
-  const router = useRouter();
+
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -109,16 +108,7 @@ const Home = () => {
           parentStyle="justify-start mb-7 h-72 sm:h-60 p-12 xs:p-4 xs:h-44 rounded-3xl"
           handleClick={() => window.open('https://fusionimage.netlify.app/')}
         />
-        <div className="flexCenter">
-          <Button
-            btnName="Create NFTs"
-            btnType="secondary"
-            classStyles="font-medium rounded-lg text-lg rounded-xl py-4 px-5"
-            handleClick={() => {
-              router.push('/create-nft');
-            }}
-          />
-        </div>
+
         {!isLoading && !nfts.length ? (
           <h1 className="font-poppins dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold ml-4 xs:ml-0">
             That&apos;s weird... No NFTs for sale!

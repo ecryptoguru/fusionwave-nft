@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Web3Button } from '@web3modal/react';
 
 import images from '../assets';
+import { NFTContext } from '../context/NFTContext';
+import Button from './Button';
 
 const MenuItems = ({ isMobile, active, setActive, setIsOpen }) => {
   const generateLink = (i) => {
@@ -44,10 +45,33 @@ const MenuItems = ({ isMobile, active, setActive, setIsOpen }) => {
   );
 };
 
-const ButtonGroup = () => (
-  <Web3Button />
+const ButtonGroup = ({ setActive, router, setIsOpen }) => {
+  const { connectWallet, currentAccount } = useContext(NFTContext);
 
-);
+  return currentAccount ? (
+    <div className="flexCenter">
+      <Button
+        btnName="Create"
+        btnType="primary"
+        classStyles="mx-2 rounded-xl"
+        handleClick={() => {
+          setActive('');
+          setIsOpen(false);
+          router.push('/create-nft');
+        }}
+      />
+    </div>
+  ) : (
+
+    <Button
+      btnName="Connect"
+      btnType="secondary"
+      classStyles="mx-2 rounded-lg"
+      handleClick={connectWallet}
+    />
+
+  );
+};
 
 const checkActive = (active, setActive, router) => {
   switch (router.pathname) {
