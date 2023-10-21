@@ -17,11 +17,11 @@ export const NFTProvider = ({ children }) => {
   const fetchNFTs = async () => {
     setIsLoadingNFT(false);
 
-    const network = 'sepolia';
-    const provider = ethers.getDefaultProvider(network, {
+    // const provider = new ethers.providers.JsonRpcProvider('https://sepolia-rpc.scroll.io/');
+    // const provider = new ethers.providers.JsonRpcProvider('https://rpc.testnet.mantle.xyz/');
 
-      infura: '2WbzvgJK8c2cWFobTT0gJqxEeut',
-    });
+    const network = 'sepolia';
+    const provider = ethers.getDefaultProvider(network, { infura: '2WbzvgJK8c2cWFobTT0gJqxEeut' });
 
     const contract = fetchContract(provider);
 
