@@ -18,7 +18,6 @@ export const NFTProvider = ({ children }) => {
     setIsLoadingNFT(false);
 
     const network = 'sepolia';
-
     const provider = ethers.getDefaultProvider(network, {
 
       infura: '2WbzvgJK8c2cWFobTT0gJqxEeut',
