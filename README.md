@@ -9,3 +9,12 @@ We are leveraging the power of Web3 to provide access, ownership, and a marketpl
 # Tech Stack
 
 Our tech stack is centered around utilizing modern and fluid technologies that allow us to build world-class NFT Marketplace that is both feature rich and user-friendly. Currently, our tech stack includes Nextjs, React, TailwindCSS, JavaScript, Solidity, Nodejs, Ethersjs and we have deployed on Vercel.
+
+Website
+https://www.fusionwaveai.com
+
+Litepaper
+https://drive.google.com/file/d/1TkK88BGE-LobHAxMCVI9Es58_Qpg91Mh/view?usp=share_link
+
+Pitchdeck
+https://drive.google.com/file/d/1ejBTI-hKUAznchKRb65WQsTxQG-t5uKI/view?usp=share_link
