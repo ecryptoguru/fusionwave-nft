@@ -28,10 +28,10 @@ const FooterLinks = ({ heading, items, extraClasses }) => (
 );
 
 const socialLinks = [
-  { image: images.twitter, url: 'https://www.instagram.com/your-instagram-link' },
-  { image: images.linkedin, url: 'https://twitter.com/your-twitter-link' },
-  { image: images.telegram, url: 'https://t.me/your-telegram-link' },
-  { image: images.discord, url: 'https://discord.com/your-discord-link' },
+  { image: images.twitter, url: 'https://twitter.com/FusionwaveAI' },
+  { image: images.linkedin, url: 'https://www.linkedin.com/company/fusionwaveai/' },
+  { image: images.telegram, url: 'https://t.me/fusionwaveai' },
+  { image: images.discord, url: 'https://discord.gg/MyfMCJukSe' },
 ];
 
 const Footer = () => {
