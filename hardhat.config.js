@@ -4,7 +4,7 @@ require('dotenv').config();
 module.exports = {
 
   solidity: '0.8.4', // solidity version
-  defaultNetwork: 'scrollSepolia', // chosen by default when network isn't specified while running Hardhat
+  defaultNetwork: 'sepolia', // chosen by default when network isn't specified while running Hardhat
   networks: {
     scrollSepolia: {
       url: 'https://sepolia-rpc.scroll.io' || '',
@@ -16,8 +16,12 @@ module.exports = {
       accounts: [process.env.PRIVATE_KEY],
     },
     mantleTest: {
-      url: 'https://rpc.testnet.mantle.xyz', // testnet
+      url: 'https://rpc.testnet.mantle.xyz',
       accounts: [process.env.PRIVATE_KEY ?? ''],
+    },
+    arbitrumSepolia: {
+      url: 'https://sepolia-rollup.arbitrum.io/rpc',
+      accounts: [process.env.PRIVATE_KEY],
     },
   },
   etherscan: {
@@ -37,6 +41,14 @@ module.exports = {
         urls: {
           apiURL: 'https://explorer.testnet.mantle.xyz/api',
           browserURL: 'https://explorer.testnet.mantle.xyz',
+        },
+      },
+      {
+        network: 'arbitrumSepolia',
+        chainId: 421614,
+        urls: {
+          apiURL: 'https://api-sepolia.arbiscan.io/api',
+          browserURL: 'https://sepolia.arbiscan.io/',
         },
       },
     ],

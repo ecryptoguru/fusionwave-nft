@@ -19,6 +19,7 @@ export const NFTProvider = ({ children }) => {
 
     // const provider = new ethers.providers.JsonRpcProvider('https://sepolia-rpc.scroll.io/');
     // const provider = new ethers.providers.JsonRpcProvider('https://rpc.testnet.mantle.xyz/');
+    // const provider = new ethers.providers.JsonRpcProvider('https://sepolia-rollup.arbitrum.io/rpc');
     const provider = new ethers.providers.JsonRpcProvider('https://sepolia.infura.io/v3/2WbzvgJK8c2cWFobTT0gJqxEeut');
 
     const contract = fetchContract(provider);
