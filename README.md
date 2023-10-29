@@ -13,8 +13,6 @@ Our tech stack is centered around utilizing modern and fluid technologies that a
 Website
 https://www.fusionwaveai.com
 
-Litepaper
-https://drive.google.com/file/d/1TkK88BGE-LobHAxMCVI9Es58_Qpg91Mh/view
 
 Pitchdeck
 https://drive.google.com/file/d/1dHZKVQWW4obTo1rjS1w3jOCVlUujV8cV/view
