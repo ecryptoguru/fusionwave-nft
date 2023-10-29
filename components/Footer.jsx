@@ -79,7 +79,7 @@ const Footer = () => {
           <FooterLinks
             heading="Resources(live)"
             items={[
-              { text: 'Pitchdeck', url: 'https://drive.google.com/file/d/1ejBTI-hKUAznchKRb65WQsTxQG-t5uKI/view' },
+              { text: 'Pitchdeck', url: 'https://drive.google.com/file/d/12iw7QUiK9_-hOT6yd3WNby6iQdvAGLx_/view' },
               { text: 'Litepaper', url: 'https://drive.google.com/file/d/1TkK88BGE-LobHAxMCVI9Es58_Qpg91Mh/view' },
             ]}
 
